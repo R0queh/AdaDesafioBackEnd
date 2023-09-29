@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -28,14 +29,14 @@ public class PessoaJuridicaController implements PessoaJuridicaSwaggerController
 
 
     @Override
-    @GetMapping("/{cnpj}")
-    public ResponseEntity<PessoaJuridica> buscarPessoaJuridica(@PathVariable String cnpj){
+    @GetMapping
+    public ResponseEntity<PessoaJuridica> buscarPessoaJuridica(@RequestParam String cnpj){
       return ResponseEntity.ok(pessoaJuridicaService.buscarPessoaJuridica(cnpj));
     };
 
     @Override
-    @DeleteMapping("/{cnpj}")
-    public ResponseEntity<String> deletarPessoaJuridica(@PathVariable final String cnpj){
+    @DeleteMapping
+    public ResponseEntity<String> deletarPessoaJuridica(@RequestParam final String cnpj){
         return ResponseEntity.ok(pessoaJuridicaService.deletePessoaJuridica(cnpj));
     }
 

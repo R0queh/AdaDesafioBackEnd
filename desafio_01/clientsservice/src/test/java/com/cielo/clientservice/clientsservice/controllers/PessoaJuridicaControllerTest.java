@@ -30,14 +30,14 @@ class PessoaJuridicaControllerTest {
     @Test
     void buscarPessoaJuridica() throws Exception {
         PessoaJuridica pessoaJuridica = PessoaJuridicaBuilder.builder().build();
-        Mockito.when(pessoaJuridicaService.buscarPessoaJuridica(TestConstants.CNPJ_SO_NUMERO)).thenReturn(pessoaJuridica);
+        Mockito.when(pessoaJuridicaService.buscarPessoaJuridica(TestConstants.CNPJ)).thenReturn(pessoaJuridica);
 
         String json = mapperBuilder.build().writeValueAsString(pessoaJuridica);
 
 
-        final String path = String.format("/company/%s", TestConstants.CNPJ_SO_NUMERO);
+        final String path = String.format("/company");
 
-        this.mockMvc.perform(MockMvcRequestBuilders.get(path))
+        this.mockMvc.perform(MockMvcRequestBuilders.get(path).param("cnpj", TestConstants.CNPJ))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(json));
@@ -46,12 +46,12 @@ class PessoaJuridicaControllerTest {
     @Test
     void deletarPessoaJuridica() throws Exception {
         String expected = "Pessoa jurídica deletada com sucesso";
-        Mockito.when(pessoaJuridicaService.deletePessoaJuridica(TestConstants.CNPJ_SO_NUMERO)).thenReturn(expected);
+        Mockito.when(pessoaJuridicaService.deletePessoaJuridica(TestConstants.CNPJ)).thenReturn(expected);
 
 
-        final String path = String.format("/company/%s", TestConstants.CNPJ_SO_NUMERO);
+        final String path = String.format("/company");
 
-        this.mockMvc.perform(MockMvcRequestBuilders.delete(path))
+        this.mockMvc.perform(MockMvcRequestBuilders.delete(path).param("cnpj", TestConstants.CNPJ))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(expected));
