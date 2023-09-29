@@ -1,9 +1,8 @@
-package com.cielo.clientservice.clientsservice.entities.clientes;
+package com.cielo.clientservice.clientsservice.entities.clientes.v1;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.validation.annotation.Validated;
 
 import java.util.Objects;
 

@@ -1,6 +1,7 @@
-package com.cielo.clientservice.clientsservice.controllers.swagger;
+package com.cielo.clientservice.clientsservice.controllers.swagger.v2;
 
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaJuridica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v2.PessoaJuridicaV2;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,7 +13,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 
 @Tag(name = "Company", description = "Cielo company API")
-public interface PessoaJuridicaSwaggerController {
+public interface PessoaJuridicaV2SwaggerController {
 
     @Operation(summary = "Buscar pessoa jurídica", description = "Buscar pessoa jurídica pelo CNPJ")
     @ApiResponses(value = {
@@ -20,7 +21,7 @@ public interface PessoaJuridicaSwaggerController {
             @ApiResponse(responseCode = "404", description = "Pessoa jurídica não encontrada", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "500", description = "Erro interno", content = @Content(mediaType = "application/json"))
     })
-    public ResponseEntity<PessoaJuridica> buscarPessoaJuridica(@Parameter(description = "CNPJ da pessoa jurídica") String cnpj);
+    public ResponseEntity<PessoaJuridicaV2> buscarPessoaJuridica(@Parameter(description = "CNPJ da pessoa jurídica") String cnpj);
 
     @Operation(summary = "Deletar pessoa jurídica", description = "Deletar pessoa jurídica pelo CNPJ")
     @ApiResponses(value = {
@@ -36,7 +37,7 @@ public interface PessoaJuridicaSwaggerController {
             @ApiResponse(responseCode = "409", description = "Conflito no cadastro de pessoa física, pessoa jurídica já existe", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "500", description = "Erro interno", content = @Content(mediaType = "application/json"))
     })
-    ResponseEntity<String> cadastrarPessoaJuridica(@Parameter(description = "Objeto com as informações da pessoa jurídica") PessoaJuridica pessoaJuridica);
+    ResponseEntity<String> cadastrarPessoaJuridica(@Parameter(description = "Objeto com as informações da pessoa jurídica") PessoaJuridicaV2 pessoaJuridica);
 
     @Operation(summary = "Update company", description = "Atualizar pessoa jurídica conforme objeto recebido")
     @ApiResponses(value = {
@@ -45,5 +46,5 @@ public interface PessoaJuridicaSwaggerController {
             @ApiResponse(responseCode = "409", description = "Conflito no cadastro de pessoa jurídica, pessoa não encontrada", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "500", description = "Erro interno", content = @Content(mediaType = "application/json"))
     })
-    ResponseEntity<PessoaJuridica> atualizarPessoaJuridica(@Parameter(description = "Objeto com as informações da pessoa jurídica") PessoaJuridica pessoaJuridica);
+    ResponseEntity<PessoaJuridicaV2> atualizarPessoaJuridica(@Parameter(description = "Objeto com as informações da pessoa jurídica") PessoaJuridicaV2 pessoaJuridica);
 }

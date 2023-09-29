@@ -1,12 +1,12 @@
-package com.cielo.clientservice.clientsservice.services;
+package com.cielo.clientservice.clientsservice.services.v1;
 
 import com.cielo.clientservice.clientsservice.DTO.ClienteDTO;
-import com.cielo.clientservice.clientsservice.entities.clientes.PessoaFisica;
-import com.cielo.clientservice.clientsservice.entities.clientes.PessoaJuridica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaFisica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaJuridica;
 import com.cielo.clientservice.clientsservice.entities.fila.Fila;
 import com.cielo.clientservice.clientsservice.mappers.ClienteDTOMapper;
-import com.cielo.clientservice.clientsservice.repositories.PessoaFisicaRepository;
-import com.cielo.clientservice.clientsservice.repositories.PessoaJuridicaRepository;
+import com.cielo.clientservice.clientsservice.repositories.v1.PessoaFisicaRepository;
+import com.cielo.clientservice.clientsservice.repositories.v1.PessoaJuridicaRepository;
 import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;

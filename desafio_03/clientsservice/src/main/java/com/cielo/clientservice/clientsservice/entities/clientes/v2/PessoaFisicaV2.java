@@ -1,15 +1,14 @@
-package com.cielo.clientservice.clientsservice.entities.clientes;
+package com.cielo.clientservice.clientsservice.entities.clientes.v2;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.validation.annotation.Validated;
 
 import java.util.Objects;
 
 
 @Entity
-public final class PessoaFisica extends Cliente {
+public final class PessoaFisicaV2 extends ClienteV2 {
 
     @CPF
     @Id
@@ -27,7 +26,7 @@ public final class PessoaFisica extends Cliente {
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        PessoaFisica that = (PessoaFisica) object;
+        PessoaFisicaV2 that = (PessoaFisicaV2) object;
         return Objects.equals(cpf, that.cpf);
     }
 

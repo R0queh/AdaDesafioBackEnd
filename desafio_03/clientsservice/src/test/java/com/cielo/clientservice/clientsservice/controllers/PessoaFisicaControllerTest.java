@@ -1,8 +1,9 @@
 package com.cielo.clientservice.clientsservice.controllers;
 
-import com.cielo.clientservice.clientsservice.entities.clientes.PessoaFisica;
-import com.cielo.clientservice.clientsservice.services.PessoaFisicaService;
-import com.cielo.clientservice.clientsservice.entities.PessoaFisicaBuilder;
+import com.cielo.clientservice.clientsservice.controllers.v1.PessoaFisicaController;
+import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaFisica;
+import com.cielo.clientservice.clientsservice.services.v1.PessoaFisicaService;
+import com.cielo.clientservice.clientsservice.entities.v1.PessoaFisicaBuilder;
 import com.cielo.clientservice.clientsservice.utils.TestConstants;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

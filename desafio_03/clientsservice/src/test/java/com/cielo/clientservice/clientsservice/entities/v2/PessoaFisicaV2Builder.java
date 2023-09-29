@@ -1,52 +1,47 @@
-package com.cielo.clientservice.clientsservice.entities.v1;
+package com.cielo.clientservice.clientsservice.entities.v2;
 
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaFisica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v2.PessoaFisicaV2;
 import com.cielo.clientservice.clientsservice.utils.TestConstants;
 
 import java.time.LocalDateTime;
 
-public class PessoaFisicaBuilder {
-    private PessoaFisica pessoaFisica;
+public class PessoaFisicaV2Builder {
+    private PessoaFisicaV2 pessoaFisica;
 
-    private PessoaFisicaBuilder() {
-        pessoaFisica = new PessoaFisica();
+    private PessoaFisicaV2Builder() {
+        pessoaFisica = new PessoaFisicaV2();
         pessoaFisica.setEmail(TestConstants.EMAIL);
         pessoaFisica.setNome(TestConstants.NOME);
         pessoaFisica.setMerchantCategoryCode(TestConstants.MCC);
-        pessoaFisica.setAtualizadoEm(TestConstants.NOW);
         pessoaFisica.setCpf(TestConstants.CPF);
     }
 
-    public static PessoaFisicaBuilder builder() {
-        return new PessoaFisicaBuilder();
+    public static PessoaFisicaV2Builder builder() {
+        return new PessoaFisicaV2Builder();
     }
 
-    public PessoaFisicaBuilder withEmail(String email) {
+    public PessoaFisicaV2Builder withEmail(String email) {
         pessoaFisica.setEmail(email);
         return this;
     }
 
-    public PessoaFisicaBuilder withNome(String nome) {
+    public PessoaFisicaV2Builder withNome(String nome) {
         pessoaFisica.setNome(nome);
         return this;
     }
 
-    public PessoaFisicaBuilder withMerchantCategoryCode(String merchantCategoryCode) {
+    public PessoaFisicaV2Builder withMerchantCategoryCode(String merchantCategoryCode) {
         pessoaFisica.setMerchantCategoryCode(merchantCategoryCode);
         return this;
     }
 
-    public PessoaFisicaBuilder withAtualizadoEm(LocalDateTime atualizadoEm) {
-        pessoaFisica.setAtualizadoEm(atualizadoEm);
-        return this;
-    }
-
-    public PessoaFisicaBuilder withCpf(String cpf) {
+    public PessoaFisicaV2Builder withCpf(String cpf) {
         pessoaFisica.setCpf(cpf);
         return this;
     }
 
-    public PessoaFisica build() {
+    public PessoaFisicaV2 build() {
         return pessoaFisica;
     }
 }

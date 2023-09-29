@@ -1,8 +1,9 @@
-package com.cielo.clientservice.clientsservice.controllers;
+package com.cielo.clientservice.clientsservice.controllers.v1;
 
-import com.cielo.clientservice.clientsservice.controllers.swagger.PessoaFisicaSwaggerController;
-import com.cielo.clientservice.clientsservice.entities.clientes.PessoaFisica;
-import com.cielo.clientservice.clientsservice.services.PessoaFisicaService;
+import com.cielo.clientservice.clientsservice.controllers.swagger.v1.PessoaFisicaSwaggerController;
+import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaFisica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v2.PessoaFisicaV2;
+import com.cielo.clientservice.clientsservice.services.v1.PessoaFisicaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,7 @@ public class PessoaFisicaController implements PessoaFisicaSwaggerController {
 
     @Override
     @GetMapping("/{cpf}")
-    public ResponseEntity<PessoaFisica> buscarPessoaFisica(@PathVariable String cpf){
+    public ResponseEntity buscarPessoaFisica(@PathVariable String cpf){
       return ResponseEntity.ok(pessoaFisicaService.buscarPessoaFisica(cpf));
     };
 

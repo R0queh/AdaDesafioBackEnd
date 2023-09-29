@@ -1,21 +1,12 @@
-package com.cielo.clientservice.clientsservice.DTO;
+package com.cielo.clientservice.clientsservice.DTO.v2;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import jakarta.persistence.Entity;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
-
-import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class ClienteDTO {
+public class ClienteDTOV2 {
 
     private String email;
     private String nome;
     private String merchantCategoryCode;
-    private String atualizadoEm;
     private String cpf;
     private String cnpj;
     private String nomeFantasia;
@@ -42,14 +33,6 @@ public class ClienteDTO {
 
     public void setMerchantCategoryCode(String merchantCategoryCode) {
         this.merchantCategoryCode = merchantCategoryCode;
-    }
-
-    public String getAtualizadoEm() {
-        return atualizadoEm;
-    }
-
-    public void setAtualizadoEm(String atualizadoEm) {
-        this.atualizadoEm = atualizadoEm;
     }
 
     public String getCpf() {
@@ -80,12 +63,12 @@ public class ClienteDTO {
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        ClienteDTO that = (ClienteDTO) object;
-        return Objects.equals(email, that.email) && Objects.equals(nome, that.nome) && Objects.equals(merchantCategoryCode, that.merchantCategoryCode) && Objects.equals(atualizadoEm, that.atualizadoEm) && Objects.equals(cpf, that.cpf) && Objects.equals(cnpj, that.cnpj) && Objects.equals(nomeFantasia, that.nomeFantasia);
+        ClienteDTOV2 that = (ClienteDTOV2) object;
+        return Objects.equals(email, that.email) && Objects.equals(nome, that.nome) && Objects.equals(merchantCategoryCode, that.merchantCategoryCode) && Objects.equals(cpf, that.cpf) && Objects.equals(cnpj, that.cnpj) && Objects.equals(nomeFantasia, that.nomeFantasia);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, nome, merchantCategoryCode, atualizadoEm, cpf, cnpj, nomeFantasia);
+        return Objects.hash(email, nome, merchantCategoryCode, cpf, cnpj, nomeFantasia);
     }
 }

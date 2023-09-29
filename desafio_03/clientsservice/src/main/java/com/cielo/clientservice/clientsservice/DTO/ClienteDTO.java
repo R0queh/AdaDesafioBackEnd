@@ -1,5 +1,8 @@
 package com.cielo.clientservice.clientsservice.DTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
@@ -12,7 +15,7 @@ public class ClienteDTO {
     private String email;
     private String nome;
     private String merchantCategoryCode;
-    private LocalDateTime atualizadoEm;
+    private String atualizadoEm;
     private String cpf;
     private String cnpj;
     private String nomeFantasia;
@@ -41,11 +44,11 @@ public class ClienteDTO {
         this.merchantCategoryCode = merchantCategoryCode;
     }
 
-    public LocalDateTime getAtualizadoEm() {
+    public String getAtualizadoEm() {
         return atualizadoEm;
     }
 
-    public void setAtualizadoEm(LocalDateTime atualizadoEm) {
+    public void setAtualizadoEm(String atualizadoEm) {
         this.atualizadoEm = atualizadoEm;
     }
 

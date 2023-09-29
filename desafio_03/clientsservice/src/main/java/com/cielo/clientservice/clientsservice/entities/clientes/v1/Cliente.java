@@ -1,4 +1,4 @@
-package com.cielo.clientservice.clientsservice.entities.clientes;
+package com.cielo.clientservice.clientsservice.entities.clientes.v1;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;

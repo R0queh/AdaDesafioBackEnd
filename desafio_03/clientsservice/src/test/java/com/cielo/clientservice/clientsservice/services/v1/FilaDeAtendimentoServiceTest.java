@@ -1,15 +1,14 @@
-package com.cielo.clientservice.clientsservice.services;
+package com.cielo.clientservice.clientsservice.services.v1;
 
 import com.cielo.clientservice.clientsservice.DTO.ClienteDTO;
-import com.cielo.clientservice.clientsservice.entities.PessoaFisicaBuilder;
-import com.cielo.clientservice.clientsservice.entities.PessoaJuridicaBuilder;
+import com.cielo.clientservice.clientsservice.entities.v1.PessoaFisicaBuilder;
+import com.cielo.clientservice.clientsservice.entities.v1.PessoaJuridicaBuilder;
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaFisica;
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaJuridica;
 import com.cielo.clientservice.clientsservice.mappers.ClienteDTOMapper;
 import com.cielo.clientservice.clientsservice.mappers.ClienteDTOMapperImpl;
 import com.cielo.clientservice.clientsservice.repositories.v1.PessoaFisicaRepository;
 import com.cielo.clientservice.clientsservice.repositories.v1.PessoaJuridicaRepository;
-import com.cielo.clientservice.clientsservice.services.v1.FilaDeAtendimentoService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

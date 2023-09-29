@@ -1,46 +1,38 @@
-package com.cielo.clientservice.clientsservice.entities.v1;
+package com.cielo.clientservice.clientsservice.entities.v2;
 
-import com.cielo.clientservice.clientsservice.entities.clientes.v1.Cliente;
+import com.cielo.clientservice.clientsservice.entities.clientes.v2.ClienteV2;
 import com.cielo.clientservice.clientsservice.utils.TestConstants;
 
-import java.time.LocalDateTime;
+public class ClienteV2Builder {
+    private ClienteV2 cliente;
 
-public class ClienteBuilder {
-    private Cliente cliente;
-
-    private ClienteBuilder() {
-        cliente = new Cliente();
+    private ClienteV2Builder() {
+        cliente = new ClienteV2();
         cliente.setEmail(TestConstants.EMAIL);
         cliente.setNome(TestConstants.NOME);
         cliente.setMerchantCategoryCode(TestConstants.MCC);
-        cliente.setAtualizadoEm(TestConstants.NOW);
     }
 
-    public static ClienteBuilder builder() {
-        return new ClienteBuilder();
+    public static ClienteV2Builder builder() {
+        return new ClienteV2Builder();
     }
 
-    public ClienteBuilder withEmail(String email) {
+    public ClienteV2Builder withEmail(String email) {
         cliente.setEmail(email);
         return this;
     }
 
-    public ClienteBuilder withNome(String nome) {
+    public ClienteV2Builder withNome(String nome) {
         cliente.setNome(nome);
         return this;
     }
 
-    public ClienteBuilder withMerchantCategoryCode(String merchantCategoryCode) {
+    public ClienteV2Builder withMerchantCategoryCode(String merchantCategoryCode) {
         cliente.setMerchantCategoryCode(merchantCategoryCode);
         return this;
     }
 
-    public ClienteBuilder withAtualizadoEm(LocalDateTime atualizadoEm) {
-        cliente.setAtualizadoEm(atualizadoEm);
-        return this;
-    }
-
-    public Cliente build() {
+    public ClienteV2 build() {
         return cliente;
     }
 }

@@ -1,8 +1,9 @@
 package com.cielo.clientservice.clientsservice.controllers;
 
-import com.cielo.clientservice.clientsservice.entities.PessoaJuridicaBuilder;
-import com.cielo.clientservice.clientsservice.entities.clientes.PessoaJuridica;
-import com.cielo.clientservice.clientsservice.services.PessoaJuridicaService;
+import com.cielo.clientservice.clientsservice.controllers.v1.PessoaJuridicaController;
+import com.cielo.clientservice.clientsservice.entities.v1.PessoaJuridicaBuilder;
+import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaJuridica;
+import com.cielo.clientservice.clientsservice.services.v1.PessoaJuridicaService;
 import com.cielo.clientservice.clientsservice.utils.TestConstants;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

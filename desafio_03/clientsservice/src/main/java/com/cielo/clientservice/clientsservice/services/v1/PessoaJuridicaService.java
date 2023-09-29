@@ -1,8 +1,8 @@
-package com.cielo.clientservice.clientsservice.services;
+package com.cielo.clientservice.clientsservice.services.v1;
 
-import com.cielo.clientservice.clientsservice.entities.clientes.PessoaJuridica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaJuridica;
 import com.cielo.clientservice.clientsservice.exceptions.ClientServiceException;
-import com.cielo.clientservice.clientsservice.repositories.PessoaJuridicaRepository;
+import com.cielo.clientservice.clientsservice.repositories.v1.PessoaJuridicaRepository;
 import com.cielo.clientservice.clientsservice.utils.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

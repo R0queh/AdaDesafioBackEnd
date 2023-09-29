@@ -1,4 +1,4 @@
-package com.cielo.clientservice.clientsservice.controllers.swagger;
+package com.cielo.clientservice.clientsservice.controllers.swagger.v1;
 
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaJuridica;
 import io.swagger.v3.oas.annotations.Operation;

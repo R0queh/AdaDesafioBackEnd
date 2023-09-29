@@ -1,4 +1,4 @@
-package com.cielo.clientservice.clientsservice.entities.clientes;
+package com.cielo.clientservice.clientsservice.entities.clientes.v1;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

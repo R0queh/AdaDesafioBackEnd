@@ -1,4 +1,4 @@
-package com.cielo.clientservice.clientsservice.repositories;
+package com.cielo.clientservice.clientsservice.repositories.v2;
 
 
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaJuridica;

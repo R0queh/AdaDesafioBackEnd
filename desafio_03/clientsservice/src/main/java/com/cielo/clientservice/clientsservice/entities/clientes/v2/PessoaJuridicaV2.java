@@ -1,4 +1,4 @@
-package com.cielo.clientservice.clientsservice.entities.clientes;
+package com.cielo.clientservice.clientsservice.entities.clientes.v2;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Validated
-public final class PessoaJuridica extends Cliente {
+public final class PessoaJuridicaV2 extends ClienteV2 {
 
     @Id
     @CNPJ(message = "CNPJ inválido, passe somente números ou use o padrão XX.XXX.XXX/0001-XX")
@@ -49,7 +49,7 @@ public final class PessoaJuridica extends Cliente {
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        PessoaJuridica that = (PessoaJuridica) object;
+        PessoaJuridicaV2 that = (PessoaJuridicaV2) object;
         return Objects.equals(cnpj, that.cnpj) && Objects.equals(nomeFantasia, that.nomeFantasia) && Objects.equals(cpf, that.cpf);
     }
 

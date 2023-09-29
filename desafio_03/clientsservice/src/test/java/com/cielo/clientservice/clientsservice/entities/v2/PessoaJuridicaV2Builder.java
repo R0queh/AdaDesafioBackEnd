@@ -1,64 +1,59 @@
 package com.cielo.clientservice.clientsservice.entities.v2;
 
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaJuridica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v2.PessoaJuridicaV2;
 import com.cielo.clientservice.clientsservice.utils.TestConstants;
 
 import java.time.LocalDateTime;
 
-public class PessoaJuridicaBuilder {
-    private PessoaJuridica pessoaJuridica;
+public class PessoaJuridicaV2Builder {
+    private PessoaJuridicaV2 pessoaJuridica;
 
-    private PessoaJuridicaBuilder() {
-        pessoaJuridica = new PessoaJuridica();
+    private PessoaJuridicaV2Builder() {
+        pessoaJuridica = new PessoaJuridicaV2();
         pessoaJuridica.setEmail(TestConstants.EMAIL);
         pessoaJuridica.setNome(TestConstants.NOME);
         pessoaJuridica.setMerchantCategoryCode(TestConstants.MCC);
-        pessoaJuridica.setAtualizadoEm(TestConstants.NOW);
         pessoaJuridica.setCpf(TestConstants.CPF);
         pessoaJuridica.setCnpj(TestConstants.CNPJ);
         pessoaJuridica.setNomeFantasia(TestConstants.NOME_FANTASIA);
     }
 
-    public static PessoaJuridicaBuilder builder() {
-        return new PessoaJuridicaBuilder();
+    public static PessoaJuridicaV2Builder builder() {
+        return new PessoaJuridicaV2Builder();
     }
 
-    public PessoaJuridicaBuilder withEmail(String email) {
+    public PessoaJuridicaV2Builder withEmail(String email) {
         pessoaJuridica.setEmail(email);
         return this;
     }
 
-    public PessoaJuridicaBuilder withNome(String nome) {
+    public PessoaJuridicaV2Builder withNome(String nome) {
         pessoaJuridica.setNome(nome);
         return this;
     }
 
-    public PessoaJuridicaBuilder withMerchantCategoryCode(String merchantCategoryCode) {
+    public PessoaJuridicaV2Builder withMerchantCategoryCode(String merchantCategoryCode) {
         pessoaJuridica.setMerchantCategoryCode(merchantCategoryCode);
         return this;
     }
 
-    public PessoaJuridicaBuilder withAtualizadoEm(LocalDateTime atualizadoEm) {
-        pessoaJuridica.setAtualizadoEm(atualizadoEm);
-        return this;
-    }
-
-    public PessoaJuridicaBuilder withCnpj(String cnpj) {
+    public PessoaJuridicaV2Builder withCnpj(String cnpj) {
         pessoaJuridica.setCnpj(cnpj);
         return this;
     }
 
-    public PessoaJuridicaBuilder withNomeFantasia(String nomeFantasia) {
+    public PessoaJuridicaV2Builder withNomeFantasia(String nomeFantasia) {
         pessoaJuridica.setNomeFantasia(nomeFantasia);
         return this;
     }
 
-    public PessoaJuridicaBuilder withCpf(String cpf) {
+    public PessoaJuridicaV2Builder withCpf(String cpf) {
         pessoaJuridica.setCpf(cpf);
         return this;
     }
 
-    public PessoaJuridica build() {
+    public PessoaJuridicaV2 build() {
         return pessoaJuridica;
     }
 }

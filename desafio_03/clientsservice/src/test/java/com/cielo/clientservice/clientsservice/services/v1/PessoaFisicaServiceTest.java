@@ -1,10 +1,9 @@
-package com.cielo.clientservice.clientsservice.services;
+package com.cielo.clientservice.clientsservice.services.v1;
 
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaFisica;
-import com.cielo.clientservice.clientsservice.entities.PessoaFisicaBuilder;
+import com.cielo.clientservice.clientsservice.entities.v1.PessoaFisicaBuilder;
 import com.cielo.clientservice.clientsservice.exceptions.ClientServiceException;
 import com.cielo.clientservice.clientsservice.repositories.v1.PessoaFisicaRepository;
-import com.cielo.clientservice.clientsservice.services.v1.PessoaFisicaService;
 import com.cielo.clientservice.clientsservice.utils.TestConstants;
 import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Assertions;

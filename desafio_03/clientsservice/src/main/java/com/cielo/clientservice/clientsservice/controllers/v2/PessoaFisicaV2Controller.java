@@ -1,8 +1,10 @@
-package com.cielo.clientservice.clientsservice.controllers;
+package com.cielo.clientservice.clientsservice.controllers.v2;
 
-import com.cielo.clientservice.clientsservice.controllers.swagger.PessoaFisicaSwaggerController;
-import com.cielo.clientservice.clientsservice.entities.clientes.PessoaFisica;
-import com.cielo.clientservice.clientsservice.services.PessoaFisicaService;
+import com.cielo.clientservice.clientsservice.controllers.swagger.v1.PessoaFisicaSwaggerController;
+import com.cielo.clientservice.clientsservice.controllers.swagger.v2.PessoaFisicaV2SwaggerController;
+import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaFisica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v2.PessoaFisicaV2;
+import com.cielo.clientservice.clientsservice.services.v2.PessoaFisicaV2Service;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,19 +19,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("person")
-public class PessoaFisicaController implements PessoaFisicaSwaggerController {
+@RequestMapping("/v2/person")
+public class PessoaFisicaV2Controller implements PessoaFisicaV2SwaggerController {
 
-    private final PessoaFisicaService pessoaFisicaService;
+    private final PessoaFisicaV2Service pessoaFisicaService;
 
     @Autowired
-    public PessoaFisicaController(PessoaFisicaService pessoaFisicaService) {
+    public PessoaFisicaV2Controller(PessoaFisicaV2Service pessoaFisicaService) {
         this.pessoaFisicaService = pessoaFisicaService;
     }
 
     @Override
     @GetMapping("/{cpf}")
-    public ResponseEntity<PessoaFisica> buscarPessoaFisica(@PathVariable String cpf){
+    public ResponseEntity<PessoaFisicaV2> buscarPessoaFisica(@PathVariable String cpf){
       return ResponseEntity.ok(pessoaFisicaService.buscarPessoaFisica(cpf));
     };
 
@@ -41,13 +43,13 @@ public class PessoaFisicaController implements PessoaFisicaSwaggerController {
 
     @Override
     @PostMapping
-    public ResponseEntity<String> cadastroPessoaFisica(@RequestBody @Valid PessoaFisica pessoaFisica){
+    public ResponseEntity<String> cadastroPessoaFisica(@RequestBody @Valid PessoaFisicaV2 pessoaFisica){
         return new ResponseEntity<>(pessoaFisicaService.cadastrarPessoaFisica(pessoaFisica), HttpStatus.CREATED);
     };
 
     @Override
     @PatchMapping
-    public ResponseEntity<PessoaFisica> atualizarPessoaFisica(@RequestBody @Valid PessoaFisica pessoaFisica){
+    public ResponseEntity<PessoaFisicaV2> atualizarPessoaFisica(@RequestBody @Valid PessoaFisicaV2 pessoaFisica){
         return new ResponseEntity<>(pessoaFisicaService.atualizarPessoaFisica(pessoaFisica), HttpStatus.OK);
     }
 }

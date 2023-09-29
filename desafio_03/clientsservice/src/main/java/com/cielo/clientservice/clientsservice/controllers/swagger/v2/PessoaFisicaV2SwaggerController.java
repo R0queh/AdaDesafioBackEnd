@@ -1,6 +1,7 @@
-package com.cielo.clientservice.clientsservice.controllers.swagger;
+package com.cielo.clientservice.clientsservice.controllers.swagger.v2;
 
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaFisica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v2.PessoaFisicaV2;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -12,7 +13,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 
 @Tag(name = "Pessoa física", description = "API de pessoa física CIELO")
-public interface PessoaFisicaSwaggerController {
+public interface PessoaFisicaV2SwaggerController {
 
     @Operation(summary = "Buscar pessoa física", description = "Buscar pessoa física por cpf")
     @ApiResponses(value = {
@@ -20,7 +21,7 @@ public interface PessoaFisicaSwaggerController {
             @ApiResponse(responseCode = "404", description = "Pessoa física não encontrada", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "500", description = "Erro interno", content = @Content(mediaType = "application/json"))
     })
-    public ResponseEntity<PessoaFisica> buscarPessoaFisica(@Parameter(description = "CPF da pessoa física") String cpf);
+    public ResponseEntity<PessoaFisicaV2> buscarPessoaFisica(@Parameter(description = "CPF da pessoa física") String cpf);
 
     @Operation(summary = "Deletar pessoa física", description = "Deletar pessoa fisica por CPF")
     @ApiResponses(value = {
@@ -36,7 +37,7 @@ public interface PessoaFisicaSwaggerController {
             @ApiResponse(responseCode = "409", description = "Conflito no cadastro de pessoa física, pessoa física já existe", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "500", description = "Erro interno", content = @Content(mediaType = "application/json"))
     })
-    ResponseEntity<String> cadastroPessoaFisica(@Parameter(description = "Objeto com as informações da pessoa física") PessoaFisica pessoaFisica);
+    ResponseEntity<String> cadastroPessoaFisica(@Parameter(description = "Objeto com as informações da pessoa física") PessoaFisicaV2 pessoaFisica);
 
     @Operation(summary = "Atualização de pessoa física", description = "Atualizar pessoa fisica conforme objeto recebido")
     @ApiResponses(value = {
@@ -45,5 +46,5 @@ public interface PessoaFisicaSwaggerController {
             @ApiResponse(responseCode = "409", description = "Conflito no cadastro de pessoa física, pessoa não encontrada", content = @Content(mediaType = "application/json")),
             @ApiResponse(responseCode = "500", description = "Erro interno", content = @Content(mediaType = "application/json"))
     })
-    ResponseEntity<PessoaFisica> atualizarPessoaFisica(@Parameter(description = "Objeto com as informações da pessoa física") PessoaFisica pessoaFisica);
+    ResponseEntity<PessoaFisicaV2> atualizarPessoaFisica(@Parameter(description = "Objeto com as informações da pessoa física") PessoaFisicaV2 pessoaFisica);
 }

@@ -1,29 +1,33 @@
-package com.cielo.clientservice.clientsservice.services;
+package com.cielo.clientservice.clientsservice.services.v2;
 
-import com.cielo.clientservice.clientsservice.entities.clientes.PessoaJuridica;
+import com.cielo.clientservice.clientsservice.entities.clientes.v2.PessoaJuridicaV2;
 import com.cielo.clientservice.clientsservice.exceptions.ClientServiceException;
-import com.cielo.clientservice.clientsservice.repositories.PessoaJuridicaRepository;
+import com.cielo.clientservice.clientsservice.mappers.ClienteDTOV2Mapper;
+import com.cielo.clientservice.clientsservice.repositories.v2.PessoaJuridicaV2Repository;
 import com.cielo.clientservice.clientsservice.utils.Constants;
+import io.awspring.cloud.sqs.operations.SqsTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
-public class PessoaJuridicaService {
+public class PessoaJuridicaV2Service {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PessoaJuridicaService.class);
-    private final PessoaJuridicaRepository pessoaJuridicaRepository;
+    private static final Logger LOGGER = LoggerFactory.getLogger(PessoaJuridicaV2Service.class);
+    private final PessoaJuridicaV2Repository pessoaJuridicaRepository;
+    private final SqsTemplate sqsTemplate;
+    private final ClienteDTOV2Mapper clienteDTOV2Mapper;
 
     @Autowired
-    public PessoaJuridicaService(PessoaJuridicaRepository pessoaJuridicaRepository) {
+    public PessoaJuridicaV2Service(PessoaJuridicaV2Repository pessoaJuridicaRepository, SqsTemplate sqsTemplate, ClienteDTOV2Mapper clienteDTOV2Mapper) {
         this.pessoaJuridicaRepository = pessoaJuridicaRepository;
+        this.sqsTemplate = sqsTemplate;
+        this.clienteDTOV2Mapper = clienteDTOV2Mapper;
     }
 
-    public PessoaJuridica buscarPessoaJuridica(final String cnpj){
+    public PessoaJuridicaV2 buscarPessoaJuridica(final String cnpj){
         LOGGER.info("Buscando pessoa jurídica");
         try{
             return pessoaJuridicaRepository.getReferenceById(cnpj);
@@ -39,7 +43,7 @@ public class PessoaJuridicaService {
         return "Pessoa jurídica deletada com sucesso";
     }
 
-    public String cadastrarPessoaJuridica(PessoaJuridica pessoaJuridica){
+    public String cadastrarPessoaJuridica(PessoaJuridicaV2 pessoaJuridica){
         LOGGER.info("Cadastrando pessoa jurídica de email {}, nome {} e nome fantasia {}",
                 pessoaJuridica.getEmail(),
                 pessoaJuridica.getNome(),
@@ -48,8 +52,9 @@ public class PessoaJuridicaService {
             pessoaJuridica.setCpf(pessoaJuridica.getCpf().replaceAll("[^a-zA-Z0-9]", ""));
             pessoaJuridicaRepository.getReferenceById(pessoaJuridica.getCnpj());
         }catch (Exception exception){
-            pessoaJuridica.setAtualizadoEm(LocalDateTime.now());
             pessoaJuridicaRepository.save(pessoaJuridica);
+            LOGGER.info("Mandando cliente cadastrado para a fila");
+            sqsTemplate.send(to -> to.queue(Constants.FILA_DE_CLIENTES).payload(clienteDTOV2Mapper.toClienteDTO(pessoaJuridica)));
             return "Pessoa jurídica cadastrada com sucesso";
         }
         LOGGER.info("Erro ao cadastrar pessoa jurídica de email {}, nome {} e nome fantasia {}, CNPJ já está em uso",
@@ -59,16 +64,17 @@ public class PessoaJuridicaService {
             throw ClientServiceException.conflito(Constants.PESSOA_JURIDICA.toLowerCase(), Constants.CNPJ);
     }
 
-    public PessoaJuridica atualizarPessoaJuridica(PessoaJuridica pessoaJuridica){
+    public PessoaJuridicaV2 atualizarPessoaJuridica(PessoaJuridicaV2 pessoaJuridica){
         LOGGER.info("Atualizando pessoa jurídica de email {}, nome {} e nome fantasia {}",
                 pessoaJuridica.getEmail(),
                 pessoaJuridica.getNome(),
                 pessoaJuridica.getNomeFantasia());
         try{
-            PessoaJuridica referenceById = pessoaJuridicaRepository.getReferenceById(pessoaJuridica.getCnpj());
+            PessoaJuridicaV2 referenceById = pessoaJuridicaRepository.getReferenceById(pessoaJuridica.getCnpj());
             BeanUtils.copyProperties(pessoaJuridica, referenceById);
-            referenceById.setAtualizadoEm(LocalDateTime.now());
             pessoaJuridicaRepository.save(referenceById);
+            LOGGER.info("Mandando cliente atualizado para a fila");
+            sqsTemplate.send(to -> to.queue(Constants.FILA_DE_CLIENTES).payload(clienteDTOV2Mapper.toClienteDTO(pessoaJuridica)));
             return referenceById;
         }catch (Exception exception){
             LOGGER.info("Erro ao atualizar pessoa jurídica de email {}, nome {} e nome fantasia {}, Pessoa jurídica não existe",

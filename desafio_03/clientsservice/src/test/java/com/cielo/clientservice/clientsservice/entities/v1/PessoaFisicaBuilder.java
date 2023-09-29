@@ -1,4 +1,4 @@
-package com.cielo.clientservice.clientsservice.entities;
+package com.cielo.clientservice.clientsservice.entities.v1;
 
 import com.cielo.clientservice.clientsservice.entities.clientes.v1.PessoaFisica;
 import com.cielo.clientservice.clientsservice.utils.TestConstants;
